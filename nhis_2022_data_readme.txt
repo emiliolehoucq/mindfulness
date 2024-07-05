@@ -4,7 +4,7 @@ We would like to bring to your attention that when importing a CSV data file int
 software by default determines the variable attributes (i.e., data type and length) based on the 
 first few observations, which may be an insufficient number of observations if these include few 
 or no responses. Variables with a length of two or more (e.g., month of vaccine with values 1-12) 
-and with many missing values can get truncated to length of one (e.g., values 10–12 will be read 
+and with many missing values can get truncated to length of one (e.g., values 10â€“12 will be read 
 as 1) or be given an incorrect data type. In NHIS, a variable may have many missing values because 
 the question was administered during part of the year (e.g., quarters 3 and 4) and/or most of the 
 sample is out of universe for the question. 
@@ -21,7 +21,7 @@ focus on those variables with few observations).
 Options to change the default:
 
 SAS
-In SAS, add the option ‘guessingrows’ to the import statement. The 2022 Sample Child has 7,464 
+In SAS, add the option â€˜guessingrowsâ€™ to the import statement. The 2022 Sample Child has 7,464 
 observations and the example below specifies to use 5,000 observations to determine the length:
 
 proc import datafile="C:\nhis2022\child22.csv" out=child dbms=csv; getnames=yes; guessingrows=5000; run;
@@ -33,13 +33,13 @@ The default that converts text strings into enumerated values can be disabled. T
 the entire 2022 Sample Child CSV file and does not convert text strings into factors but leaves them as 
 text strings. 
 
-Child22 <- read.csv(“child22.csv”, stringsAsFactors=FALSE)
+Child22 <- read.csv(â€œchild22.csvâ€, stringsAsFactors=FALSE)
 
 
 Library(readr)
 The read_csv function by default only reads in 1,000 records to determine variable attributes and will not 
-convert strings to factors. If using read_csv, add the argument ‘guess_max.’ The 2022 Sample Child file has 
+convert strings to factors. If using read_csv, add the argument â€˜guess_max.â€™ The 2022 Sample Child file has 
 7,464 observations and the example below specifies to use 7464 observations to determine the data type.
 
-Child22 <- read_csv(“child22.csv”, guess_max = 7464)
+Child22 <- read_csv(â€œchild22.csvâ€, guess_max = 7464)
 
