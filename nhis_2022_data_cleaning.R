@@ -7,7 +7,7 @@ library(tidyverse)
 
 # Reading data ------------------------------------------------------------
 
-df <- read_csv("data_nhis_2022.csv", guess_max = 7464)
+df <- read_csv("nhis_2022_data.csv", guess_max = 7464)
 # guess_max = 7464 per suggestion of the NHIS (see data_nhis_2022_readme.txt)
 # There are some problems:
 problems(df)
@@ -43,4 +43,4 @@ df <- mutate(df, across(all_of(meditation_variables), factor))
 
 # Saving clean data -------------------------------------------------------
 
-save(df, file = paste0(paste("data_nhis_2022_clean", format(Sys.time(), "%Y_%m_%d"), sep = "_"), ".RData"))
+save(df, file = paste0(paste("nhis_2022_data_clean", format(Sys.time(), "%Y_%m_%d"), sep = "_"), ".RData"))
